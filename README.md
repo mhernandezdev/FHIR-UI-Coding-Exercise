@@ -6,7 +6,7 @@ App displays a test patients info and list a filtered view of active conditions.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-##Tested in the following browsers:
+## Tested in the following browsers:
 IE 11, Edge, Chrome, Firefox
 
 ## Preview:
