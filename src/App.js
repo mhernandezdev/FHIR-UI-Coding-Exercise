@@ -1,36 +1,35 @@
 import React, { Component } from 'react';
-import './App.css';
 import { connect } from 'react-redux';
 import * as actions from './actions';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-
+import Header from './components/Header'
+import PatientDetails from './components/PatientDetails'
+import PatientConditions from './components/PatientConditions'
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 
 class App extends Component {
 
     componentDidMount() {
-        console.log('componentDidMount()')
         this.props.fetchPatient();
         this.props.fetchConditions();
     }
 
     render() {
+        const { patient, conditions } = this.props;
+
         return (
             <div className="App">
-                <AppBar position="static" color="default">
-                    <Toolbar>
-                        <Typography variant="h6" color="inherit" noWrap>
-                            SMART on FHIR UI Coding Exercise
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
+                <Header />
 
-
+                { !patient || !conditions ? <LinearProgress /> : <div>
+                    <PatientDetails />
+                    <PatientConditions />
+                </div> }
             </div>
         );
     }
 }
-
-export default connect(null, actions)(App);
+function mapStateToProps(state){
+    return state;
+}
+export default connect(mapStateToProps, actions)(App);
