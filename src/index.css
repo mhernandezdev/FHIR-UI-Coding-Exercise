@@ -17,3 +17,6 @@ h1{
 .light-gray{
     background: #f5f5f5;
 }
+.inactive{
+    color: #bdbdbd;
+}

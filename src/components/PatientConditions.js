@@ -20,8 +20,8 @@ const PatientConditions = ({ conditions }) => {
             return {
                 id: e.resource.id,
                 dateRecorded: e.resource.dateRecorded,
-                code: e.resource.code.coding[0].display,
-                pubmed: <a href={ pubmed + e.resource.code.coding[0].display } target="_blank" rel="noopener noreferrer">PubMed Search</a>
+                code: (e.resource.code.coding && e.resource.code.coding[0].display) || 'Condition Missing',
+                pubmed: e.resource.code.coding ? <a href={ pubmed + e.resource.code.coding[0].display } target="_blank" rel="noopener noreferrer">PubMed Search</a> : <span className="inactive">PubMed Search</span>
             }
         })
         data = _.sortBy(data, (e) => e.dateRecorded);
